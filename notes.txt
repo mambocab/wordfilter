@@ -1,0 +1,2 @@
+- add implementations would be more robust if they added downcased words
+- alternatively, just downcase all elements of the blacklist before comparison
