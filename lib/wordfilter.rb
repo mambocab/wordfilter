@@ -11,13 +11,15 @@ module Wordfilter
 	
 	def self.init
 		badwords_file = File.read(BadWordsFileName);
-		@@blacklist = JSON.parse(badwords_file)["badwords"];
+		@@blacklist = JSON.parse(badwords_file);
 	end
 	
 	def self.blacklisted? string
 		self.init_first_time
 		
 		string_to_test = string.downcase
+		@@blacklist.map!{|badword| badword.downcase}
+		
 		@@blacklist.each{|word|
 			return true if string_to_test.include? word
 		}
