@@ -23,8 +23,7 @@ class Wordfilter(object):
 
     def blacklisted(self, string):
         string = string.lower().strip()
-        count = sum(True for bad in self.blacklist if string.find(bad) > -1)
-        return bool(count)
+        return any(word in string for word in self.blacklist)
 
     def add_words(self, lis):
         self.blacklist = self.blacklist + lis
