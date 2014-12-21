@@ -1,12 +1,12 @@
 import os
 import unittest
-from wordfilter import Wordfilter
+import wordfilter
 
 
 class wordfilterTest(unittest.TestCase):
 
     def setUp(self):
-        self.wf = Wordfilter()
+        self.wf = wordfilter.Wordfilter()
 
     def test_detects_bad_words_in_a_string(self):
         self.assertTrue(isinstance(self.wf, object))
@@ -36,7 +36,7 @@ class wordfilterTest(unittest.TestCase):
     def test_passed_list(self):
         '''Try to add a custom list'''
 
-        blacklist_wordfilter = Wordfilter(blacklist=['custom', 'word', 'list'])
+        blacklist_wordfilter = wordfilter.Wordfilter(blacklist=['custom', 'word', 'list'])
 
         self.assertTrue(blacklist_wordfilter.blacklisted('custom'))
         self.assertFalse(blacklist_wordfilter.blacklisted('skank'))
@@ -60,6 +60,16 @@ class wordfilterTest(unittest.TestCase):
         self.assertFalse(datafile_wordfilter.blacklisted('skank'))
 
         os.remove(txt)
+
+    def test_module_instance(self):
+        self.assertTrue(wordfilter.blacklisted('this string contains mustard.'))
+
+        wordfilter.clear_list()
+        self.assertFalse(wordfilter.blacklisted('this string contains mustard.'))
+
+        wordfilter.add_words(['custom'])
+        self.assertTrue(wordfilter.blacklisted('you can use a custom blacklist.'))
+
 
 
 def main():

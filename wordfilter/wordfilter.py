@@ -39,3 +39,9 @@ class Wordfilter(object):
 
     def clear_list(self):
         self.blacklist = []
+
+# instantiates instance so functions are available directly from module
+_module_instance = Wordfilter()
+blacklisted = _module_instance.blacklisted
+add_words = _module_instance.add_words
+clear_list = _module_instance.clear_list
