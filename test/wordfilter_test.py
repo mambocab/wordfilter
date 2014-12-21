@@ -29,6 +29,10 @@ class wordfilterTest(unittest.TestCase):
         self.wf.add_words(['skank'])
         self.assertTrue(self.wf.blacklisted('this string contains the word skank'))
 
+    def test_added_words_checked_case_insensitively(self):
+        self.wf.add_words(['CLEAN']);
+        self.assertTrue(self.wf.blacklisted("this string was clean!"))
+
     def test_passed_list(self):
         '''Try to add a custom list'''
 
