@@ -1,6 +1,12 @@
 from os import path
 import json
 
+# We'll need this to check if something is a string later.
+# This isn't great, but it's better than a dependency on six.
+try:
+    basstring
+except NameError:
+    basstring = str
 
 class Wordfilter(object):
 
@@ -27,6 +33,8 @@ class Wordfilter(object):
         return any(word in string for word in self.blacklist)
 
     def add_words(self, lis):
+        if isinstance(lis, basestring):
+            lis = [lis]
         self.blacklist = self.blacklist.extend(lis)
 
     def clear_list(self):
