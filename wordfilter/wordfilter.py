@@ -25,7 +25,7 @@ class Wordfilter(object):
 
         else:
             datafile = path.join(path.dirname(__file__), 'badwords.json')
-            self.blacklist = json.load(open(datafile, 'r')).get('badwords')
+            self.blacklist = json.load(open(datafile, 'r'))
 
     def blacklisted(self, string):
         string = string.lower().strip()
