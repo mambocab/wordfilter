@@ -41,6 +41,12 @@ class wordfilterTest(unittest.TestCase):
         self.assertTrue(blacklist_wordfilter.blacklisted('custom'))
         self.assertFalse(blacklist_wordfilter.blacklisted('skank'))
 
+    def test_add_words_in_iterable(self):
+        def word_generator():
+            yield 'test'
+        self.wf.add_words(word_generator())
+        self.assertTrue(expr)
+
     def test_custom_blacklist(self):
         '''Try to pass a txt file'''
         txt = 'dummy.txt'

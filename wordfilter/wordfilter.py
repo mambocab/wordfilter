@@ -27,7 +27,7 @@ class Wordfilter(object):
         return any(word in string for word in self.blacklist)
 
     def add_words(self, lis):
-        self.blacklist = self.blacklist + lis
+        self.blacklist = self.blacklist.extend(lis)
 
     def clear_list(self):
         self.blacklist = []
