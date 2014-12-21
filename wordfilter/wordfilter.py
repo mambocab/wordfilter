@@ -35,7 +35,7 @@ class Wordfilter(object):
     def add_words(self, lis):
         if isinstance(lis, basestring):
             lis = [lis]
-        self.blacklist = self.blacklist.extend(lis)
+        self.blacklist.extend(lis)
 
     def clear_list(self):
         self.blacklist = []
