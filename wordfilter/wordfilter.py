@@ -4,9 +4,9 @@ import json
 # We'll need this to check if something is a string later.
 # This isn't great, but it's better than a dependency on six.
 try:
-    basstring
+    basestring
 except NameError:
-    basstring = str
+    basestring = str
 
 class Wordfilter(object):
 
